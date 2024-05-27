@@ -32,10 +32,10 @@ const Timer = () => {
     return (
         <>
         <Grid item xs={8} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-            <Typography variant="h4" sx={{color: "#003C43"}}>Run time:</Typography>
+            <Typography variant="h5" sx={{color: "#003C43"}}>Run time:</Typography>
         </Grid>
         <Grid item xs={4} sx={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-            <Typography variant="h4" sx={{color: "#003C43"}}>{seconds} seconds</Typography>
+            <Typography variant="h5" sx={{color: "#003C43"}}>{seconds} seconds</Typography>
         </Grid>
         </>
     )

@@ -30,12 +30,12 @@ const rows = [
 
 const CurrentChart = () => {
   return (
-    <Grid item container direction="column" xs={4.5} sx={{width: "100%", height: "100%"}}>
-        <Grid item container xs={1} sx={{width: "100%", height: "100%",  display: "flex", alignItems: "center", paddingX: 5}}>
+    <Grid item container direction="column" xs={4.5} sx={{width: "90%", height: "100%", paddingRight: 2}}>
+        <Grid item container xs={0.5} sx={{width: "100%", height: "100%",  display: "flex", alignItems: "center", paddingBottom: 0.5, paddingRight: 0.5}}>
           <Timer />
         </Grid>
-        <Grid item xs={5} sx={{width: "100%", height: "100%",  display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <TableContainer component={Paper} sx={{boxShadow: "none", width: "90%", height: "80%", background: "#CDE8E5", borderRadius: 3, paddingY: 2}}>
+        <Grid item xs={11} direction="column" sx={{width: "100%", height: "100%",  display: "flex", justifyContent: "center", alignItems: "center", background: "#CDE8E5", borderRadius: 5}}>
+        <TableContainer component={Paper} sx={{boxShadow: "none", width: "80%", height: "45%", borderRadius: 3, margin: 0, background: "#CDE8E5", paddingTop: 1}}>
             <Table aria-label="simple table">
                 <TableHead >
                     <TableRow>
@@ -46,33 +46,31 @@ const CurrentChart = () => {
                         <TableCell align="right">Total</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody sx={{}}>
                     {rows.map((row) => (
                         <TableRow
                         key={row.name}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
                         >
-                        <TableCell sx={{fontSize: "15px"}} component="th" scope="row">
+                        <TableCell sx={{fontSize: "13px", padding: 1.5}} component="th" scope="row">
                             {row.name}
                         </TableCell>
-                        <TableCell sx={{fontSize: "15px"}} align="right">{row.calories}</TableCell>
-                        <TableCell sx={{fontSize: "15px"}} align="right">{row.fat}</TableCell>
-                        <TableCell sx={{fontSize: "15px"}} align="right">{row.carbs}</TableCell>
-                        <TableCell sx={{fontSize: "15px"}} align="right">{row.protein}</TableCell>
+                        <TableCell sx={{fontSize: "13px", padding: 1.5}} align="right">{row.calories}</TableCell>
+                        <TableCell sx={{fontSize: "13px", padding: 1.5}} align="right">{row.fat}</TableCell>
+                        <TableCell sx={{fontSize: "13px", padding: 1.5}} align="right">{row.carbs}</TableCell>
+                        <TableCell sx={{fontSize: "13px", padding: 1.5}} align="right">{row.protein}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
-    </Grid>
-    <Grid item xs={6} sx={{width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
-    <BarChart
-        xAxis={[{ scaleType: 'band', data: ['Current', 'Past 10 minutes', 'Past day'] }]}
-        series={[{ data: [0, 1, 2] }, { data: [1, 1, 1] }, { data: [2, 3, 4] }]}
-        sx={{ maxWidth: "90%", margin: 0, background: "#CDE8E5", borderRadius: 3,}}
-        width={500}
-        height={300}
-    />
+        <BarChart
+          xAxis={[{ scaleType: 'band', data: ['Current', 'Past 10 minutes', 'Past day'] }]}
+          series={[{ data: [0, 1, 2] }, { data: [1, 1, 1] }, { data: [2, 3, 4] }]}
+          sx={{ width: "90%", height: "100%", margin: 0, borderRadius: 3, paddingY: 0}}
+          width={450}
+          height={200}
+        />
     </Grid>
     </Grid>
   )

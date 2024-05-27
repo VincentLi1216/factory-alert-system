@@ -43,19 +43,19 @@ const ROIButton = () => {
       }
 
     return (
-        <Grid item container xs={1.5} direction="column" sx={{width: "100%", height: "100%", display: "flex", justifyContent: "flex-start", alignItems: "center"}}>
+        <Grid item container xs={1} direction="column" sx={{width: "100%", height: "100%", display: "flex", justifyContent: "flex-start", alignItems: "center"}}>
             <Toaster position="top-right"/>
                 {!isStarted ? 
             <Button aria-label="start" variant="contained" onClick={()=>{
                 dispatch(setIsStarted(true))
                 handleRoiSubmit(true)
-                }} size="large" sx={{background: "#1976d2", width: 80, height: 80, borderRadius: 5}}>
+                }} size="large" sx={{background: "#1976d2", width: 60, height: 60, borderRadius: 5}}>
                 <RadioButtonCheckedIcon fontSize="large" sx={{color: "white"}} />
             </Button> : !isSelectROI ? 
                 <Stack spacing={2}>
                 <Button aria-label="roi" variant="contained" size="large" onClick={()=>{
                     dispatch(setIsSelectingROI(true))
-                }} sx={{background: "#1976d2", width: 80, height: 80, borderRadius: 5}}>
+                }} sx={{background: "#1976d2", width: 60, height: 60, borderRadius: 5}}>
                     <PhotoSizeSelectSmallIcon fontSize="large" sx={{color: "white"}} />
                 </Button>
                 <Button aria-label="reset" variant="outlined" size="large" onClick={() => {
@@ -63,7 +63,7 @@ const ROIButton = () => {
                     dispatch(setSeconds(0))
                     handleRoiSubmit(true)
                     }}
-                    sx={{background: "white", border: "1px solid black", width: 80, height: 80, borderRadius: 5}}>
+                    sx={{background: "white", border: "1px solid black", width: 60, height: 60, borderRadius: 5}}>
                     <RestartAltIcon fontSize="large" sx={{color: "black"}}/>
                 </Button>
                 </Stack> : 
@@ -72,12 +72,12 @@ const ROIButton = () => {
                     dispatch(setIsSelectingROI(false))
                     dispatch(setSeconds(0))
                     handleRoiSubmit(false)
-                }} sx={{background: "black", width: 80, height: 80, borderRadius: 5}}>
+                }} sx={{background: "black", width: 60, height: 60, borderRadius: 5}}>
                     <CheckIcon fontSize="large" sx={{color: "white"}} />
                 </Button>
                 <Button aria-label="roi" variant="contained" size="large" onClick={()=>{
                     dispatch(setRegionsNew([]))
-                    }} sx={{background: "black", width: 80, height: 80, borderRadius: 5}}>
+                    }} sx={{background: "black", width: 60, height: 60, borderRadius: 5}}>
                 <CloseIcon fontSize="large" sx={{color: "white"}} />
                 </Button>
                 </Stack>}

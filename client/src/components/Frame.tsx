@@ -27,7 +27,7 @@ const Frame = () => {
     };
 
     return (
-        <Grid item xs={10.5} sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <Grid item xs={11} sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
             <RegionSelect
                 regions={regionsNew}
                 regionStyle={regionStyle}
@@ -36,7 +36,7 @@ const Frame = () => {
             > 
                 <Box
                     component="img"
-                    sx={{width: `100%`, height: `${100/12*7}vh`, borderRadius: 5, border: "1px solid black"}}
+                    sx={{width: `95%`, height: `${100/12*7}vh`, borderRadius: 5, border: "1px solid black", marginX: 2}}
                     alt="Selectable"
                     src={imageSrc}
                     onLoad={onImageLoad}

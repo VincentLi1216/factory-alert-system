@@ -10,6 +10,9 @@ export interface DataInitialSlice {
   historicalData: any
   seconds: number
   isStarted: boolean
+  detectRecords: Object[]
+  tableData: any[],
+  chartData: Object[]
 }
 
 export const DataInitialSlice: DataInitialSlice = {
@@ -23,7 +26,10 @@ export const DataInitialSlice: DataInitialSlice = {
     person: [],
   },
   seconds: 0,
-  isStarted: false
+  isStarted: false,
+  detectRecords: [],
+  tableData: [],
+  chartData: []
 };
 
 export const DataSlice = createSlice({
@@ -50,6 +56,15 @@ export const DataSlice = createSlice({
     },
     setIsStarted: (state, action) => {
       state.isStarted = action.payload;
+    },
+    updateDetectRecords: (state, action) => {
+      state.detectRecords = [action.payload, ...state.detectRecords];
+    },
+    setTableData: (state, action) => {
+      state.tableData = action.payload;
+    },
+    setChartData: (state, action) => {
+      state.chartData = action.payload;
     }
   },
   selectors: {
@@ -59,7 +74,10 @@ export const DataSlice = createSlice({
     getHistoricalData: (state) => state.historicalData,
     getHistoricalxLabels: (state) => state.historicalxLabels,
     getSeconds: (state) => state.seconds,
-    getIsStarted: (state) => state.isStarted
+    getIsStarted: (state) => state.isStarted,
+    getDetectRecords: (state) => state.detectRecords,
+    getTableData: (state) => state.tableData,
+    getChartData: (state) => state.chartData
   }
 })
 
@@ -70,7 +88,10 @@ export const {
   setHistoricalData,
   setHistoricalxLabels,
   setSeconds,
-  setIsStarted
+  setIsStarted,
+  updateDetectRecords,
+  setTableData,
+  setChartData
  } = DataSlice.actions
 
 
@@ -81,5 +102,8 @@ export const {
   getHistoricalData,
   getHistoricalxLabels,
   getSeconds,
-  getIsStarted
+  getIsStarted,
+  getDetectRecords,
+  getTableData,
+  getChartData
 } = DataSlice.selectors

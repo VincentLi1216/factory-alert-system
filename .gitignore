@@ -7,7 +7,7 @@ server/.venv
 **/.DS_Store
 
 **/cat_diff
-*.png
+# *.png
 *.jpg
 # ssh key
 id_rsa

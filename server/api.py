@@ -36,7 +36,8 @@ class ROI(BaseModel):
 
 @app.post("/roi")
 async def update_roi(payload: ROI):
-    print(payload)
+    with open('config.json', 'w') as f:
+        json.dump(payload.dict(), f)
     
 
 if __name__ == '__main__':

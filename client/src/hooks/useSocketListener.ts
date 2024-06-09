@@ -39,13 +39,13 @@ export const useSocketListener = () => {
       dispatch(setHistoricalxLabels(res.timestamp))
       console.log("res.chartData", res.tableData.pastTen)
       const rows = [
-        createData('Current', res.tableData.current.cat, res.tableData.current.ball, res.tableData.current.person, res.tableData.current.total),
-        createData('Past 10 minutes', res.tableData.pastTen.cat, res.tableData.pastTen.ball, res.tableData.pastTen.person, res.tableData.pastTen.total),
-        createData('Past day', res.tableData.pastDay.cat, res.tableData.pastDay.ball, res.tableData.pastDay.person, res.tableData.pastDay.total),
+        createData('Current', res.tableData.current.block, res.tableData.current.ball, res.tableData.current.person, res.tableData.current.total),
+        createData('Past 10 minutes', res.tableData.pastTen.block, res.tableData.pastTen.ball, res.tableData.pastTen.person, res.tableData.pastTen.total),
+        createData('Past day', res.tableData.pastDay.block, res.tableData.pastDay.ball, res.tableData.pastDay.person, res.tableData.pastDay.total),
       ]
       dispatch(setTableData(rows))
       const chartData = [
-        { data: [res.tableData.current.cat, res.tableData.pastTen.cat, res.tableData.pastDay.cat] }, 
+        { data: [res.tableData.current.block, res.tableData.pastTen.block, res.tableData.pastDay.block] }, 
         { data: [res.tableData.current.ball, res.tableData.pastTen.ball, res.tableData.pastDay.ball] }, 
         { data: [res.tableData.current.person, res.tableData.pastTen.person, res.tableData.pastDay.person]}
       ]

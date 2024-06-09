@@ -24,7 +24,7 @@ const HistoricalChart = () => {
         <LineChart
             sx={{width: "100%", height: "100%"}}
             series={[
-                { curve: "linear", data: historicalData.cat, label: 'Cat' },
+                { curve: "linear", data: historicalData.block, label: 'Block' },
                 { curve: "linear", data: historicalData.ball, label: 'Ball' },
                 { curve: "linear", data: historicalData.person, label: 'Person' },
             ]}

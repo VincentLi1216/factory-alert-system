@@ -38,7 +38,7 @@ const CurrentChart = () => {
                 <TableHead >
                     <TableRow>
                         <TableCell></TableCell>
-                        <TableCell align="right">Cats</TableCell>
+                        <TableCell align="right">Blocks</TableCell>
                         <TableCell align="right">Balls</TableCell>
                         <TableCell align="right">Human</TableCell>
                         <TableCell align="right">Total</TableCell>

@@ -21,7 +21,7 @@ export const DataInitialSlice: DataInitialSlice = {
   regionsNew: [],
   historicalxLabels: [],
   historicalData: {
-    cat: [],
+    block: [],
     ball: [],
     person: [],
   },

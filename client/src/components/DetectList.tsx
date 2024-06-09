@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import PetsIcon from '@mui/icons-material/Pets';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { useAppSelector } from '../app/hooks';
@@ -20,7 +20,7 @@ const DetectList = () => {
         {detectRecords.map((record) => (
             <ListItem alignItems="flex-start" sx={{background: "#CDE8E5", paddingY: 1}}>
                 <ListItemAvatar>
-                    {record.detect === "Cat" ? <PetsIcon /> : record.detect === "Ball" ? <SportsBaseballIcon /> :<DirectionsRunIcon />}
+                    {record.detect === "Block" ? <Inventory2Icon /> : record.detect === "Ball" ? <SportsBaseballIcon /> :<DirectionsRunIcon />}
                 </ListItemAvatar>
                 <Box sx={{background: "none"}}>
                     <ListItemText

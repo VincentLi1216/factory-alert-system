@@ -20,7 +20,7 @@ const Header = () => {
         <Grid item xs={4} sx={{
             // border: "1px solid black", 
             display: "flex", alignItems: "center"}}>
-            <Typography variant="h4" sx={{fontWeight: 600, color: "#003C43"}}>IntruSense</Typography>
+            <Typography variant="h5" sx={{fontWeight: 600, color: "#003C43"}}>Project Nocturnal Hawkeye</Typography>
         </Grid>
         <Grid item xs={4} sx={{
         // border: "1px solid black", 

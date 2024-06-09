@@ -45,9 +45,9 @@ export const useSocketListener = () => {
       ]
       dispatch(setTableData(rows))
       const chartData = [
-        { data: [res.tableData.current.block, res.tableData.pastTen.block, res.tableData.pastDay.block] }, 
-        { data: [res.tableData.current.ball, res.tableData.pastTen.ball, res.tableData.pastDay.ball] }, 
-        { data: [res.tableData.current.person, res.tableData.pastTen.person, res.tableData.pastDay.person]}
+        { data: [res.tableData.current.block, res.tableData.pastTen.block, res.tableData.pastDay.block], label: 'Blocks' }, 
+        { data: [res.tableData.current.ball, res.tableData.pastTen.ball, res.tableData.pastDay.ball], label: 'Balls' }, 
+        { data: [res.tableData.current.person, res.tableData.pastTen.person, res.tableData.pastDay.person], label: 'Person'}
       ]
       dispatch(setChartData(chartData))
     });

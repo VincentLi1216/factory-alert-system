@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import Avatar from '@mui/material/Avatar';
+import PersonIcon from '@mui/icons-material/Person';
 
 const Header = () => {
     const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -30,7 +31,7 @@ const Header = () => {
         <Grid item container xs={4} sx={{
             // border: "1px solid black", 
             display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
-            <Avatar alt="Admin" src="/" sx={{marginX: 2}}/>
+            <Avatar alt="Admin" sx={{marginX: 2}}><PersonIcon/></Avatar>
             <Typography variant="h6">Hello, Admin!</Typography>
         </Grid>
         </>

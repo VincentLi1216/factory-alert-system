@@ -48,7 +48,7 @@ def process_image(img, cutting=True):
     
     return True, reshaped_img, target_img
 
-label_dict = {'cat': 0, 'person': 1, 'ball': 2}
+label_dict = {'person': 0, 'ball': 1, 'block': 2}
 label_dict = {v: k for k, v in label_dict.items()}
     
 model = tf.keras.models.load_model('./utils/model_weights.keras')

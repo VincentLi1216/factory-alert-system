@@ -21,16 +21,16 @@ current_timestamp = [datetime.datetime.now().strftime('%H:%M:%S')]
 last_state = None
 
 # 更改週期（每幾秒更新一次）
-PERIOD = 2
+PERIOD = 1
 
 data = {
-        'cat': [0],
+        'block': [0],
         'ball': [0],
         'person': [0],
     }
 
 current_data = {
-        'cat': [0],
+        'block': [0],
         'ball': [0],
         'person': [0],
     }
@@ -40,7 +40,7 @@ def connect(sid, environ):
     global data, timestamp
     timestamp = [datetime.datetime.now().strftime('%H:%M:%S')]
     data = {
-            'cat': [0],
+            'block': [0],
             'ball': [0],
             'person': [0],
         }
@@ -56,7 +56,7 @@ def update_data(obj, value):
             data[key].append(0)
         else:
             data[key].append(value)
-    current_data['cat'] = data['cat'][-10:]
+    current_data['block'] = data['block'][-10:]
     current_data['ball'] = data['ball'][-10:]
     current_data['person'] = data['person'][-10:]
     
@@ -67,7 +67,7 @@ def update_data(obj, value):
         
 def capture_and_send():
     # ----------換成深度相機的設定----------
-    img_list = os.listdir('./tmp_img')
+    img_list = os.listdir('./sample')
     # -----------------------------------
     global prev_config, data, timestamp, current_timestamp, current_data, last_state
     while True:
@@ -79,18 +79,18 @@ def capture_and_send():
                 current_timestamp = [datetime.datetime.now().strftime('%H:%M:%S')]
 
                 data = {
-                        'cat': [0],
+                        'block': [0],
                         'ball': [0],
                         'person': [0],
                     }
 
                 current_data = {
-                        'cat': [0],
+                        'block': [0],
                         'ball': [0],
                         'person': [0],
                     }
         # ----------換成讀入深度相機的影像----------
-        img_path = f'./tmp_img/{random.choice(img_list)}'
+        img_path = f'./sample/{random.choice(img_list)}'
         image = cv2.imread(img_path, 0)
         # ---------------------------------------
         # TODO: 進行影像處理
@@ -139,19 +139,19 @@ def find_current_data():
     if idx == len(timestamp):
         return {
             'current': {
-                'cat': 0,
+                'block': 0,
                 'ball': 0,
                 'person': 0,
                 'total': 0
             },
             'pastTen': {
-                'cat': 0,
+                'block': 0,
                 'ball': 0,
                 'person': 0,
                 'total': 0
             },
             "pastDay": {
-                'cat': 0,
+                'block': 0,
                 'ball': 0,
                 'person': 0,
                 'total': 0
@@ -159,22 +159,22 @@ def find_current_data():
         }
     return {
         'current': {
-            'cat': data['cat'][-1],
+            'block': data['block'][-1],
             'ball': data['ball'][-1],
             'person': data['person'][-1],
-            'total': data['cat'][-1] + data['ball'][-1] + data['person'][-1]
+            'total': data['block'][-1] + data['ball'][-1] + data['person'][-1]
         },
         'pastTen': {
-            'cat': sum(data['cat'][idx:]),
+            'block': sum(data['block'][idx:]),
             'ball': sum(data['ball'][idx:]),
             'person': sum(data['person'][idx:]),
-            'total': sum(data['cat'][idx:]) + sum(data['ball'][idx:]) + sum(data['person'][idx:]),
+            'total': sum(data['block'][idx:]) + sum(data['ball'][idx:]) + sum(data['person'][idx:]),
         },
         "pastDay": {
-            'cat': sum(data['cat'][idx:]),
+            'block': sum(data['block'][idx:]),
             'ball': sum(data['ball'][idx:]),
             'person': sum(data['person'][idx:]),
-            'total': sum(data['cat'][idx:]) + sum(data['ball'][idx:]) + sum(data['person'][idx:]),
+            'total': sum(data['block'][idx:]) + sum(data['ball'][idx:]) + sum(data['person'][idx:]),
         }
     }
         

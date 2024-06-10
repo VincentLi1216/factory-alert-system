@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def subtract_images(image1_path, image2_path, output_path):
+def subtract_images(image1_path, image2_path, output_path, mode=1):
     # 讀取圖片
     img1 = cv2.imread(image1_path, 0)
     img2 = cv2.imread(image2_path, 0)

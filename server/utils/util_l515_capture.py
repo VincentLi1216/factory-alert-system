@@ -20,5 +20,32 @@ def l515_connection_test(full_info=False):
                     print(f"    幀率：{profile.fps()}")
     return True
 
+def capture_depth_img():
+    try:
+        # 創建管道
+        pipeline = rs.pipeline()
+
+        # 配置流
+        config = rs.config()
+        config.enable_stream(rs.stream.depth, 320, 240, rs.format.z16, 30)
+        config.enable_stream(rs.stream.confidence, 320, 240, rs.format.raw8, 30)
+        config.enable_stream(rs.stream.infrared, 320, 240, rs.format.y8, 30)
+        config.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
+
+        # 啟動管道
+        profile = pipeline.start(config)
+
+        frames = pipeline.wait_for_frames()
+
+        # 獲取各種幀數據
+        depth_frame = frames.get_depth_frame()
+        confidence_frame = frames.first(rs.stream.confidence)
+        infrared_frame = frames.first(rs.stream.infrared)
+        color_frame = frames.get_color_frame()
+        return depth_frame, confidence_frame, infrared_frame, color_frame
+    except Exception as e:
+        print(e)
+        return None
+
 if __name__ == "__main__":
     list_supported_streams()

@@ -12,7 +12,7 @@ import json
 from utils.predict import predict_image
 from utils.roi import roi_image
 from utils.util_subtract_img import subtract_img
-from utils.util_l515_capture import l515_connection_test
+from utils.util_l515_capture import capture_depth_img, l515_connection_test
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
@@ -101,10 +101,12 @@ def capture_and_send():
         # ---------------------------------------
         if l515_connection_test():
             pass
-            # TODO: get image from L515
+            depth_frame, confidence_frame, infrared_frame, color_frame = capture_depth_img()
             # TODO: get orig_img but how?
-            diff_img = subtract_img(img, orig_img)
+            orig_img  = None
+            diff_img = subtract_img(depth_frame, orig_img)
         else:
+            print("No L515 camera detected.")
             # TODO: Raise error or use sample data
             pass
 

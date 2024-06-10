@@ -1,0 +1,8 @@
+numpy
+fastapi
+pybase64
+matplotlib
+tensorflow
+opencv-python
+python-socketio
+eventlet

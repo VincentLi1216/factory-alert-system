@@ -24,6 +24,7 @@ last_state = None
 
 # 更改週期（每幾秒更新一次）
 PERIOD = 1
+MODE = 1
 
 data = {
         'block': [0],
@@ -92,19 +93,21 @@ def capture_and_send():
                         'person': [0],
                     }
         # ----------換成讀入深度相機的影像----------
-        img_path = f'./sample/{random.choice(img_list)}'
-        image = cv2.imread(img_path, 0)
+        
         # ---------------------------------------
         # TODO: 進行影像處理
         # 目標：得到與原圖相減的灰階圖片（如./tmp_img的圖片）
         # 輸出：`image`
         # ---------------------------------------
-        if l515_connection_test():
+        if l515_connection_test() and MODE == 1:
             pass
             depth_frame, confidence_frame, infrared_frame, color_frame = capture_depth_img()
             # TODO: get orig_img but how?
             orig_img  = None
-            diff_img = subtract_img(depth_frame, orig_img)
+            image = subtract_img(depth_frame, orig_img)
+        elif MODE == 2:
+            img_path = f'./sample/{random.choice(img_list)}'
+            image = cv2.imread(img_path, 0)
         else:
             print("No L515 camera detected.")
             # TODO: Raise error or use sample data

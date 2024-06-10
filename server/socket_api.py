@@ -11,6 +11,8 @@ import json
 
 from utils.predict import predict_image
 from utils.roi import roi_image
+from utils.util_subtract_img import subtract_img
+from utils.util_l515_capture import capture_depth_img, l515_connection_test
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
@@ -97,7 +99,17 @@ def capture_and_send():
         # 目標：得到與原圖相減的灰階圖片（如./tmp_img的圖片）
         # 輸出：`image`
         # ---------------------------------------
-        
+        if l515_connection_test():
+            pass
+            depth_frame, confidence_frame, infrared_frame, color_frame = capture_depth_img()
+            # TODO: get orig_img but how?
+            orig_img  = None
+            diff_img = subtract_img(depth_frame, orig_img)
+        else:
+            print("No L515 camera detected.")
+            # TODO: Raise error or use sample data
+            pass
+
         target_img = False
         image_type = None
         if config != {}:

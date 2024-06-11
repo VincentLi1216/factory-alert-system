@@ -1,6 +1,7 @@
-import pyrealsense2 as rs
+# import pyrealsense2 as rs
 
 def l515_connection_test(full_info=False):
+    return
     ctx = rs.context()
     devices = ctx.query_devices()
     if not devices:
@@ -21,6 +22,7 @@ def l515_connection_test(full_info=False):
     return True
 
 def capture_depth_img():
+    return
     try:
         # 創建管道
         pipeline = rs.pipeline()

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setImageData, getImageData, setHistoricalData, setHistoricalxLabels, updateDetectRecords, setChartData, setTableData } from '../features/dataFetching/DataSlice';
 import { useAppSelector } from "../app/hooks";
 
-const socket = io('http://localhost:5000');
+const socket = io('http://localhost:4999');
 
 function createData(
   name: string,

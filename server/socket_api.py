@@ -24,7 +24,7 @@ last_state = None
 
 # 更改週期（每幾秒更新一次）
 PERIOD = 1
-MODE = 1
+MODE = 2
 
 data = {
         'block': [0],
@@ -99,7 +99,7 @@ def capture_and_send():
         # 目標：得到與原圖相減的灰階圖片（如./tmp_img的圖片）
         # 輸出：`image`
         # ---------------------------------------
-        if l515_connection_test() and MODE == 1:
+        if MODE == 1 and l515_connection_test():
             pass
             depth_frame, confidence_frame, infrared_frame, color_frame = capture_depth_img()
             # TODO: get orig_img but how?
@@ -116,11 +116,16 @@ def capture_and_send():
         target_img = False
         image_type = None
         if config != {}:
+            print("119")
+            print(config)
             if config['startX'] == 0 and config['startY'] == 0 and config['width'] == 0 and config['height'] == 0:
+                print("!!!120")
                 predict_img = image
             else:
                 predict_img = roi_image(image, config)
             image_type, processed_image = predict_image(predict_img)
+            print("!!!125")
+            print(image_type)
             if image_type is not None:
                 update_data(image_type, 1)
                 if last_state != image_type:
@@ -215,4 +220,4 @@ if __name__ == '__main__':
     thread2 = threading.Thread(target=send_data_per_seconds)
     thread2.start()
     
-    wsgi.server(eventlet.listen(('', 5000)), app)
+    wsgi.server(eventlet.listen(('', 4999)), app)

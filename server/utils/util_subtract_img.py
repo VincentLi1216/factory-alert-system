@@ -13,7 +13,7 @@ def subtract_img(img, orig_img):
         raise ValueError("兩張圖片大小不相同")
 
     # subtract the images
-    diff = cv2.subtract(gray, orig_gray)
+    diff = cv2.absdiff(gray, orig_gray)
     return diff
     
 
